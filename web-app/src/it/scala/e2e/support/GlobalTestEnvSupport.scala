@@ -1,4 +1,4 @@
-package env
+package e2e.support
 
 import org.specs2.execute.{AsResult, Error, Result}
 import org.specs2.specification.AroundEach
@@ -9,13 +9,13 @@ import scala.util.{Failure, Success, Try}
 trait GlobalTestEnvSupport extends AroundEach {
   self: SpecificationStructure =>
 
-  def testEnv: Try[ManagedService]
+  def testEnvironment: Try[ManagedService]
 
   final override def around[T: AsResult](t: => T): Result = {
-    testEnv match {
+    testEnvironment match {
       case Success(_) => AsResult(t)
       case Failure(_) => Error("Failed to initialize test environment")
-      case _ => Error(s"Invalid state $testEnv during test execution")
+      case _ => Error(s"Invalid state $testEnvironment during test execution")
     }
   }
 }

@@ -10,7 +10,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.example</groupId>
     <artifactId>web-app</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
@@ -58,7 +57,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.example.DemoApplication</mainClass>
+                    <mainClass>com.example.web.service.Main</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

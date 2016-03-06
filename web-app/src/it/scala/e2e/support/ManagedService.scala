@@ -1,4 +1,4 @@
-package env
+package e2e.support
 
 import scala.util.Try
 

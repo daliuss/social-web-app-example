@@ -1,3 +1,6 @@
+package com.demo.e2e
+
+import e2e.E2ETest
 import org.specs2.specification.Scope
 import org.springframework.boot.test.TestRestTemplate
 import org.springframework.http.HttpStatus

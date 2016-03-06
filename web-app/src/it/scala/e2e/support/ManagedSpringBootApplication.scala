@@ -1,13 +1,13 @@
-package env
+package e2e.support
 
-import com.example.SampleConfig
+import com.example.web.service.spring.SpringConfig
 import org.springframework.boot.SpringApplication
 
 import scala.util.Try
 
 class ManagedSpringBootApplication(port: Int) extends ManagedService {
 
-  val app = new SpringApplication(classOf[SampleConfig])
+  val app = new SpringApplication(classOf[SpringConfig])
   lazy val instance = app.run(buildArgumentList:_*)
 
   override def start: Try[ManagedService] = Try {

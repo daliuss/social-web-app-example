@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>demo-parent</artifactId>
+    <artifactId>example-root-pom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Root POM</name>

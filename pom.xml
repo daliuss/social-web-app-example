@@ -3,20 +3,30 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>demo</name>
-    <description>Demo project for Spring Boot</description>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.3.3.RELEASE</version>
-        <relativePath/>
+        <relativePath />
     </parent>
+
+    <groupId>com.example</groupId>
+    <artifactId>demo-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Root POM</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <org.scala-lang.version>2.11.1</org.scala-lang.version>
+
+        <org.specs2.version>3.7.1</org.specs2.version>
+    </properties>
+
+    <modules>
+        <module>web-app</module>
+    </modules>
 
     <repositories>
         <repository>
@@ -26,18 +36,12 @@
         </repository>
     </repositories>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <org.specs2.version>3.7.1</org.specs2.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
-                <version>2.11.1</version>
+                <version>${org.scala-lang.version}</version>
             </dependency>
 
             <dependency>
@@ -53,41 +57,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jetty</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.specs2</groupId>
-            <artifactId>specs2-core_2.11</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.specs2</groupId>
-            <artifactId>specs2-junit_2.11</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -95,11 +64,6 @@
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
                     <version>3.2.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.0.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -114,10 +78,7 @@
                             </goals>
                             <configuration>
                                 <sources>
-                                    <source>src/it/java</source>
                                     <source>src/it/scala</source>
-                                    <source>src/e2e/java</source>
-                                    <source>src/e2e/scala</source>
                                 </sources>
                             </configuration>
                         </execution>
@@ -131,9 +92,6 @@
                                 <resources>
                                     <resource>
                                         <directory>src/it/resources</directory>
-                                    </resource>
-                                    <resource>
-                                        <directory>src/e2e/resources</directory>
                                     </resource>
                                 </resources>
                             </configuration>
@@ -152,7 +110,6 @@
                             </goals>
                             <configuration>
                                 <includes>
-                                    <include>**/*Tests.java</include>
                                     <include>**/*Test.java</include>
                                     <include>**/*E2E.java</include>
                                 </includes>
@@ -164,7 +121,6 @@
                     </executions>
                     <configuration>
                         <includes>
-                            <include>**/*Tests.java</include>
                             <include>**/*Test.java</include>
                         </includes>
                         <excludes>
@@ -192,21 +148,6 @@
                         <phase>process-test-resources</phase>
                         <goals>
                             <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.example.DemoApplication</mainClass>
-                    <layout>ZIP</layout>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>

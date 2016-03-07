@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>demo-parent</artifactId>
+        <artifactId>social-web-app-root</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -14,7 +14,7 @@
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <name>Web application</name>
+    <name>Social Web App</name>
 
     <dependencies>
         <dependency>

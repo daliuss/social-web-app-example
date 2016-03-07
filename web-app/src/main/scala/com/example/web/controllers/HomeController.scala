@@ -8,5 +8,8 @@ class HomeController {
 
   @RequestMapping(Array("/"))
   @ResponseBody
-  def home = "Hello"
+  def home = Response("Hello!")
 }
+
+
+private[controllers] case class Response(message: String)

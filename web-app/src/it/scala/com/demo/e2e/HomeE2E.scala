@@ -13,7 +13,7 @@ class HomeE2E extends E2ETest {
     "return Hello" in new Context {
       val entity = new TestRestTemplate().getForEntity("http://localhost:" + 9001, classOf[String])
       entity.getStatusCode mustEqual HttpStatus.OK
-      entity.getBody mustEqual "Hello"
+      entity.getBody must /("message" -> "Hello!")
     }
   }
 }

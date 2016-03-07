@@ -43,6 +43,11 @@
                 <artifactId>scala-library</artifactId>
                 <version>${org.scala-lang.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-scala_2.11</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.specs2</groupId>
@@ -52,6 +57,11 @@
             <dependency>
                 <groupId>org.specs2</groupId>
                 <artifactId>specs2-junit_2.11</artifactId>
+                <version>${org.specs2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.specs2</groupId>
+                <artifactId>specs2-matcher-extra_2.11</artifactId>
                 <version>${org.specs2.version}</version>
             </dependency>
         </dependencies>

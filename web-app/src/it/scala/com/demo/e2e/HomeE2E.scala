@@ -1,19 +1,21 @@
 package com.demo.e2e
 
 import e2e.E2ETest
+import e2e.env.EmbeddedEnvironment
+import e2e.support.matchers.HttpResponseMatchers
 import org.specs2.specification.Scope
-import org.springframework.boot.test.TestRestTemplate
-import org.springframework.http.HttpStatus
 
-class HomeE2E extends E2ETest {
+class HomeE2E extends E2ETest with HttpResponseMatchers {
 
-  class Context extends Scope
+  class Context extends Scope {
+    val driver = new HomeClient(EmbeddedEnvironment.mainServicePort)
+  }
 
   "Home controller" should {
     "return Hello" in new Context {
-      val entity = new TestRestTemplate().getForEntity("http://localhost:" + 9001, classOf[String])
-      entity.getStatusCode mustEqual HttpStatus.OK
-      entity.getBody must /("message" -> "Hello!")
+      driver.getHome must beOKWith(
+        /("message" -> "Hello!")
+      ).and(withJsonUTF8ContentType)
     }
   }
 }

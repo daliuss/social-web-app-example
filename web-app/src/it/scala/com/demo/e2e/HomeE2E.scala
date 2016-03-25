@@ -12,10 +12,18 @@ class HomeE2E extends E2ETest with HttpResponseMatchers {
   }
 
   "Home controller" should {
-    "return Hello" in new Context {
-      driver.getHome must beOKWith(
-        /("message" -> "Hello!")
-      ).and(withJsonUTF8ContentType)
+    "denies access when no authentication" in new Context {
+      driver.getHome() must (beUnauthorizedWith(
+        /("entity") / "options" /#0 /("tag" -> "dummy")
+          and /("entity") / "options" /#0 /("url" -> "http://localhost")
+          and /("isError" -> "true")
+      ) and withJsonUTF8ContentType)
+    }
+
+    "allows authenticated access" in new Context {
+      driver.getHome(params = Map("authenticate" -> "")) must (beOKWith(
+        /("entity" -> "Hello!")
+      ) and withJsonUTF8ContentType)
     }
   }
 }

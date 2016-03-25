@@ -1,13 +1,12 @@
 package com.demo.e2e
 
-import org.springframework.boot.test.TestRestTemplate
+import e2e.support.TestHttpClient
 import org.springframework.http.ResponseEntity
 
-class HomeClient(port: Int) {
 
-  def getHome: ResponseEntity[String] = get("/", classOf[String])
+class HomeClient(val port: Int) extends TestHttpClient {
 
-  def get[T](path: String, t: Class[T]): ResponseEntity[T] = {
-    new TestRestTemplate().getForEntity(s"http://localhost:$port/$path", t)
+  def getHome(params: Map[String, String] = Map.empty): ResponseEntity[String] = {
+    get("/", params, classOf[String])
   }
 }

@@ -9,7 +9,7 @@ import scala.collection.JavaConversions._
 trait HttpResponseMatchers extends Spec {
 
   def withHttpStatus[T](status: HttpStatus): Matcher[ResponseEntity[T]] = {
-    beEqualTo(HttpStatus.OK) ^^ {
+    beEqualTo(status) ^^ {
       (_: ResponseEntity[T]).getStatusCode
     }
   }
@@ -28,6 +28,10 @@ trait HttpResponseMatchers extends Spec {
 
   def beOKWith[T](matcher: Matcher[T]): Matcher[ResponseEntity[T]] = {
     withHttpStatus[T](HttpStatus.OK) and matchResponseBody[T](matcher)
+  }
+
+  def beUnauthorizedWith[T](matcher: Matcher[T]): Matcher[ResponseEntity[T]] = {
+    withHttpStatus[T](HttpStatus.UNAUTHORIZED) and matchResponseBody[T](matcher)
   }
 
 }

@@ -9,19 +9,21 @@ class HomeE2E extends E2ETest with HttpResponseMatchers {
 
   class Context extends Scope {
     val driver = new HomeClient(EmbeddedEnvironment.mainServicePort)
+
+    val dummyAuthorizationUrl = EmbeddedEnvironment.mainServiceUrl + "?jwt="
   }
 
   "Home controller" should {
     "denies access when no authentication" in new Context {
       driver.getHome() must (beUnauthorizedWith(
         /("entity") / "options" /#0 /("tag" -> "dummy")
-          and /("entity") / "options" /#0 /("url" -> "http://localhost")
+          and /("entity") / "options" /#0 /("url" -> dummyAuthorizationUrl)
           and /("isError" -> "true")
       ) and withJsonUTF8ContentType)
     }
 
     "allows authenticated access" in new Context {
-      driver.getHome(params = Map("authenticate" -> "")) must (beOKWith(
+      driver.getHome(params = Map("jwt" -> "")) must (beOKWith(
         /("entity" -> "Hello!")
       ) and withJsonUTF8ContentType)
     }

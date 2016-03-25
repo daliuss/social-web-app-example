@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication
 
 import scala.util.Try
 
-class ManagedSpringBootApplication(port: Int) extends ManagedService {
+class ManagedSpringBootApplication(port: Int, url: String) extends ManagedService {
 
   val app = new SpringApplication(classOf[SpringConfig])
   lazy val instance = app.run(buildArgumentList:_*)
@@ -24,7 +24,8 @@ class ManagedSpringBootApplication(port: Int) extends ManagedService {
 
   private[this] def buildArgumentList: Array[String] = {
     Array(
-      s"--server.port=$port"
+      s"--server.port=$port",
+      s"--server.url=$url"
     )
   }
 }

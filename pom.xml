@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.3.RELEASE</version>
+        <version>1.5.6.RELEASE</version>
         <relativePath />
     </parent>
 
@@ -19,9 +19,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <org.scala-lang.version>2.11.1</org.scala-lang.version>
-
-        <org.specs2.version>3.7.1</org.specs2.version>
+        <org.scala-lang.version>2.12.3</org.scala-lang.version>
+        <org.specs2.version>3.9.1</org.specs2.version>
+        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
     </properties>
 
     <modules>
@@ -45,23 +47,23 @@
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-scala_2.11</artifactId>
+                <artifactId>jackson-module-scala_2.12</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.specs2</groupId>
-                <artifactId>specs2-core_2.11</artifactId>
+                <artifactId>specs2-core_2.12</artifactId>
                 <version>${org.specs2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.specs2</groupId>
-                <artifactId>specs2-junit_2.11</artifactId>
+                <artifactId>specs2-junit_2.12</artifactId>
                 <version>${org.specs2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.specs2</groupId>
-                <artifactId>specs2-matcher-extra_2.11</artifactId>
+                <artifactId>specs2-matcher-extra_2.12</artifactId>
                 <version>${org.specs2.version}</version>
             </dependency>
         </dependencies>
@@ -73,12 +75,12 @@
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <version>${scala-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.5</version>
+                    <version>${build-helper-maven-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>add-test-source</id>
@@ -110,7 +112,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.18.1</version>
+                    <version>${maven-surefire-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>default-test</id>

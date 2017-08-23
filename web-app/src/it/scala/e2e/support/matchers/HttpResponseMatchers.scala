@@ -15,7 +15,7 @@ trait HttpResponseMatchers extends Spec {
   }
 
   def withJsonUTF8ContentType[T]: Matcher[ResponseEntity[T]] = {
-    contain[String]("application/json;charset=UTF-8") ^^ {
+    contain[String]("application/json;charset=utf-8") ^^ {
       (_: ResponseEntity[T]).getHeaders.get("Content-Type").toIndexedSeq
     }
   }

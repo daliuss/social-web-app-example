@@ -1,7 +1,7 @@
 package e2e.support
 
 import org.slf4j.LoggerFactory
-import org.springframework.boot.test.TestRestTemplate
+import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.ResponseEntity
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.web.util.UriComponentsBuilder

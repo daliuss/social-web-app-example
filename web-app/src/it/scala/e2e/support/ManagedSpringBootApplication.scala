@@ -25,7 +25,10 @@ class ManagedSpringBootApplication(port: Int, url: String) extends ManagedServic
   private[this] def buildArgumentList: Array[String] = {
     Array(
       s"--server.port=$port",
-      s"--server.url=$url"
+      s"--server.url=$url",
+      "--google.client.id=google.client.id",
+      "--google.client.secret=google.client.secret",
+      "--testing=true"
     )
   }
 }

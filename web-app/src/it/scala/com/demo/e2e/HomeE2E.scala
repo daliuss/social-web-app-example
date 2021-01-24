@@ -1,5 +1,6 @@
 package com.demo.e2e
 
+import com.example.web.api.LoggedInUser
 import e2e.E2ETest
 import e2e.env.EmbeddedEnvironment
 import e2e.support.matchers.HttpResponseMatchers
@@ -14,18 +15,11 @@ class HomeE2E extends E2ETest with HttpResponseMatchers {
   }
 
   "Home controller" should {
-    "denies access when no authentication" in new Context {
-      driver.getHome() must (beUnauthorizedWith(
-        /("entity") / "options" /#0 /("tag" -> "dummy")
-          and /("entity") / "options" /#0 /("url" -> dummyAuthorizationUrl)
-          and /("isError" -> "true")
-      ) and withJsonUTF8ContentType)
-    }
 
     "allows authenticated access" in new Context {
-      driver.getHome(params = Map("jwt" -> "")) must (beOKWith(
-        /("entity" -> "Hello!")
-      ) and withJsonUTF8ContentType)
+      driver.getUser() must (beOKWith[LoggedInUser](
+        beEqualTo(LoggedInUser("Test user", "test@test"))
+      ) and withJsonUTF8ContentType[LoggedInUser])
     }
   }
 }

@@ -12,7 +12,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>social-web-app-root</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Social Web App Root POM</name>
 
@@ -24,7 +24,7 @@
         <scala-maven-plugin.version>4.4.0</scala-maven-plugin.version>
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <jackson.version>2.12.1</jackson.version>
+        <jackson.version>2.11.4</jackson.version>
     </properties>
 
     <modules>

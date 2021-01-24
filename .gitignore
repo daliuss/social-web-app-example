@@ -2,4 +2,4 @@
 .idea/
 *.iml
 target
-run-local.sh
+web-app/run-local.sh

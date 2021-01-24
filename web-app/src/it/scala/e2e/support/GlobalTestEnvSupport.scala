@@ -14,7 +14,9 @@ trait GlobalTestEnvSupport extends AroundEach {
   final override def around[T: AsResult](t: => T): Result = {
     testEnvironment match {
       case Success(_) => AsResult(t)
-      case Failure(_) => Error("Failed to initialize test environment")
+      case Failure(t) =>
+        t.printStackTrace()
+        Error("Failed to initialize test environment")
       case _ => Error(s"Invalid state $testEnvironment during test execution")
     }
   }

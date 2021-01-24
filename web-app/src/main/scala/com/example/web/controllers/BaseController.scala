@@ -11,14 +11,6 @@ trait BaseController {
 
   def config: Config
 
-  def secured(jwt: String)(execution: =>Response) = {
-    if (jwt != null) {
-      execution
-    } else {
-      throw new UnauthorizedException
-    }
-  }
-
   @ExceptionHandler(Array(classOf[UnauthorizedException]))
   @ResponseStatus(HttpStatus.UNAUTHORIZED)
   @ResponseBody

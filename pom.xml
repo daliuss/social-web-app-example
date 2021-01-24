@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.6.RELEASE</version>
+        <version>2.4.2</version>
         <relativePath />
     </parent>
 
@@ -19,11 +19,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <org.scala-lang.version>2.12.3</org.scala-lang.version>
-        <org.specs2.version>3.9.1</org.specs2.version>
-        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
-        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
+        <org.scala-lang.version>2.13.4</org.scala-lang.version>
+        <org.specs2.version>4.10.6</org.specs2.version>
+        <scala-maven-plugin.version>4.4.0</scala-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <jackson.version>2.12.1</jackson.version>
     </properties>
 
     <modules>
@@ -47,23 +48,23 @@
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-scala_2.12</artifactId>
+                <artifactId>jackson-module-scala_2.13</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.specs2</groupId>
-                <artifactId>specs2-core_2.12</artifactId>
+                <artifactId>specs2-core_2.13</artifactId>
                 <version>${org.specs2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.specs2</groupId>
-                <artifactId>specs2-junit_2.12</artifactId>
+                <artifactId>specs2-junit_2.13</artifactId>
                 <version>${org.specs2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.specs2</groupId>
-                <artifactId>specs2-matcher-extra_2.12</artifactId>
+                <artifactId>specs2-matcher-extra_2.13</artifactId>
                 <version>${org.specs2.version}</version>
             </dependency>
         </dependencies>

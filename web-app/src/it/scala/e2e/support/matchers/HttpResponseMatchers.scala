@@ -4,7 +4,7 @@ import org.specs2.matcher.Matcher
 import org.specs2.mutable.Spec
 import org.springframework.http.{HttpStatus, ResponseEntity}
 
-import scala.collection.JavaConversions._
+import scala.jdk.CollectionConverters._
 
 trait HttpResponseMatchers extends Spec {
 
@@ -16,7 +16,7 @@ trait HttpResponseMatchers extends Spec {
 
   def withJsonUTF8ContentType[T]: Matcher[ResponseEntity[T]] = {
     contain[String]("application/json;charset=utf-8") ^^ {
-      (_: ResponseEntity[T]).getHeaders.get("Content-Type").toIndexedSeq
+      (_: ResponseEntity[T]).getHeaders.get("Content-Type").asScala
     }
   }
 

@@ -7,7 +7,7 @@ Example web app for Java developers who are learning Scala.
 2. Scala
 3. Configured to for Heroku
 4. Java tecnologies: Spring Boot + Jetty + Maven
-5. OAuth2 integration (working on this)
+5. OAuth2 integration (Google)
 
 ## Run locally
 ```$bash

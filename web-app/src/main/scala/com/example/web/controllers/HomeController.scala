@@ -1,15 +1,21 @@
 package com.example.web.controllers
 
+import com.example.web.api.LoggedInUser
 import com.example.web.service.Config
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation._
+import org.springframework.security.core.annotation.AuthenticationPrincipal
+import org.springframework.security.oauth2.core.user.OAuth2User
+import org.springframework.web.bind.annotation.{GetMapping, _}
 
-@Controller
+@RestController
 class HomeController(val config: Config) extends BaseController {
 
-  @RequestMapping(Array("/"))
-  @ResponseBody
-  def home(@RequestParam(required = false) jwt: String) = secured(jwt) {
-    Response("Hello!")
+  @GetMapping(value = Array("/user"), produces = Array("application/json;charset=utf-8"))
+  def user(@AuthenticationPrincipal principal: OAuth2User): LoggedInUser = {
+    LoggedInUserResolver.resolve(principal)
   }
+
 }
+
+
+
+

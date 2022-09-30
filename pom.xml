@@ -19,7 +19,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <org.scala-lang.version>2.13.4</org.scala-lang.version>
+        <org.scala-lang.version>2.13.9</org.scala-lang.version>
         <org.specs2.version>4.10.6</org.specs2.version>
         <scala-maven-plugin.version>4.4.0</scala-maven-plugin.version>
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
